@@ -29,12 +29,21 @@ function App() {
     document.body.style.backgroundColor = 'grey';
     document.body.style.color = 'white';
     showAlert('success', 'Dark mode has been enabled');
+    document.title = 'TextUtils - Dark Mode';
+    setInterval(() => {
+      document.title = "Install this App";
+    }, 1500);
+    setInterval(() => {
+      document.title = "You are awesome";
+    }, 1500);
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       document.body.style.color = '#343a40';
       showAlert('warning', 'Light mode has been enabled');
+      document.title = 'TextUtils - Light Mode';
+
     }
   }
   
