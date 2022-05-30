@@ -9,20 +9,27 @@ export default function TextForm(props) {
         console.log("button was clicked");
         let newText = text.toUpperCase();
         setText(newText);
+        props.alert('success', 'Converted to Uppercase');
     }
     const handleLoClick = () => {
         console.log("button was clicked");
         let newText = text.toLowerCase();
         setText(newText);
+        props.alert('success', 'Converted to Lowercase');
+
     }
     const handleCopyClick = () => {
         let text = document.getElementById('myBox');
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.alert('success', 'Text copied to clipboard');
+
     }
     const handleRemoveSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.alert('success', 'Extra spaces removed');
+
     }
     
     const [text, setText] = useState("Enter the Text to convert");
