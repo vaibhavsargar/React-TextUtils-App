@@ -42,19 +42,19 @@ export default function TextForm(props) {
                 <div className="mb-3" >
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" />
                 </div>
-                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
+                <button disabled={text.length === 0} className={`btn btn-primary border-0 mx-2 my-1 bg-${props.mode=='light' ? 'default' :'dark'}`} onClick={handleUpClick}>
                     Convert to Uppercase
                 </button>
-                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleLoClick}>
+                <button disabled={text.length === 0} className={`btn btn-primary border-0 mx-2 my-1 bg-${props.mode=='light' ? 'default' :'dark'}`} onClick={handleLoClick}>
                     Convert to Lowercase
                 </button>
-                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleCopyClick}>
+                <button disabled={text.length === 0} className={`btn btn-primary border-0 mx-2 my-1 bg-${props.mode=='light' ? 'default' :'dark'}`} onClick={handleCopyClick}>
                     Copy Text
                 </button>
-                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleRemoveSpaces}>
+                <button disabled={text.length === 0} className={`btn btn-primary border-0 mx-2 my-1 bg-${props.mode=='light' ? 'default' :'dark'}`} onClick={handleRemoveSpaces}>
                     Remove Extra Spaces
                 </button>
-                <button disabled={text.length === 0} className="btn btn-danger  mx-2 my-1" onClick={handleRemoveAll}>
+                <button disabled={text.length === 0} className={`btn btn-primary border-0 mx-2 my-1 ${props.mode=='light' ? 'bg-primary' :'bg-dark'}`} onClick={handleRemoveAll}>
                     Remove All Content
                 </button>
                 <h2>Your text summary</h2>
