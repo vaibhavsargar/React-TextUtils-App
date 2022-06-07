@@ -19,9 +19,7 @@ export default function TextForm(props) {
 
     }
     const handleCopyClick = () => {
-        let text = document.getElementById('myBox');
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.alert('success', 'Text copied to clipboard');
 
     }
@@ -31,32 +29,39 @@ export default function TextForm(props) {
         props.alert('success', 'Extra spaces removed');
 
     }
+    const handleRemoveAll = () => {
+        setText('');
+        props.alert('success', 'All texts removed');
+    }
     
     const [text, setText] = useState("Enter the Text to convert");
     return (
         <>
             <div className={`container my-${props.value}`} >
-                <h1>{props.heading}</h1>
+                <h1 className="mb-4">{props.heading}</h1>
                 <div className="mb-3" >
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" />
                 </div>
-                <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
                     Convert to Uppercase
                 </button>
-                <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleLoClick}>
                     Convert to Lowercase
                 </button>
-                <button className="btn btn-primary mx-2" onClick={handleCopyClick}>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleCopyClick}>
                     Copy Text
                 </button>
-                <button className="btn btn-primary mx-2" onClick={handleRemoveSpaces}>
+                <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleRemoveSpaces}>
                     Remove Extra Spaces
                 </button>
-                <h3></h3>
-                <p><b>{text.split(" ").length}</b> words and <b>{text.length}</b> characters</p>
-                <p><b>{0.008*text.split(' ').length} </b> minutes reading</p>
+                <button disabled={text.length === 0} className="btn btn-danger  mx-2 my-1" onClick={handleRemoveAll}>
+                    Remove All Content
+                </button>
+                <h2>Your text summary</h2>
+                <p><b>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</b> words and <b>{text.length}</b> characters</p>
+                <p><b>{0.008*text.split(' ').filter((element)=>{return element.length!==0}).length} </b> minutes reading</p>
                 <h3>Preview</h3>
-                <p>{text.length>0?text:"Enter the text above to preview here"}</p>
+                <p>{text.length>0?text:"Nothing to preview !!!"}</p>
             </div>
              
         </>
